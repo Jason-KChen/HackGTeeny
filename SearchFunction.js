@@ -1,10 +1,11 @@
-function SearchItem(targetItem) {
-    console.log("The item to be searched is " + targetItem)
+function SearchItem(songName, artistName) {
+    console.log("The item to be searched is " + songName + " " + artistName)
     var message = {
         "method": "GET",
         "purpose": "Search",
         "givenURL": "https://thepiratebay.org/search/",
-        "keyword": targetItem
+        "keyword1": songName,
+        "keyword2": artistName
     }
     console.log("Calling chrome api")
     chrome.runtime.sendMessage(message, function(response) {
@@ -22,6 +23,33 @@ function SearchItem(targetItem) {
             score = score + Math.ceil(seedScore) + Math.ceil(leechScore)
         }
         console.log("The score is " + score)
-        updateScore(score)
+
+        var message = {
+            "method": "GET",
+            "purpose": "Date",
+            "givenURL": "https://musicbrainz.org/search?query=HERE&type=release&method=indexed",
+            "keyword1": response.key1,
+            "keyword2": response.key2,
+            "score": score
+        }
+
+        chrome.runtime.sendMessage(message, function(response) {
+            var resultHTML = $.parseHTML(response.result)
+            var targetArtist = response.artistName.toLowerCase()
+            var array = $(resultHTML).find(".tbl").find(".tbody").find("tr")
+            var date = ""
+            for (i = 0; i < array.length; i++) {
+                if ($(array[i]).find("td:eq(2)").text().toLowerCase() == targetArtist) {
+                    date = date + $(array[i]).find("td:eq(5)").text()
+                    i = array.length
+                }
+            }
+
+            var todayDate = new Date()
+            var oldDate = new Date(date)
+            var diffDate = new Date(todayDate - oldDate)
+            var numOfMonth = diffDate.getMonth() + 1 + (diffDate.getYear() * 12)
+            updateScore(score * (Math.log(numOfMonth) / Math.log(12)))
+        })
     })
 }

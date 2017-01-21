@@ -9,7 +9,7 @@ function doSomething() {
     console.log('clicked');
 
     var p = songName + " " + artistName;
-    SearchItem(p);
+    SearchItem(songName, artistName);
 }
 
 window.onload = function() {
