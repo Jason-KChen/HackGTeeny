@@ -72,7 +72,8 @@ function top25(datahtml)
 							}
 							splitup[i] = temp;
 						}
-						output = splitup.slice(0,25)
+						output = splitup.slice(0,25);
+						return output;
 
 }
 
