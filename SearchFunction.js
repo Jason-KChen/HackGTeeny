@@ -18,9 +18,10 @@ function SearchItem(targetItem) {
             var leechCountString = $(array[i]).find("td:eq(3)").text()
             var seedScore = 1.5 * (parseInt(seedCountString)/100.0)
             var leechScore = (parseInt(leechCountString)/100.0)
-            score = Math.ceil(seedScore) + Math.ceil(leechScore)
+            console.log("The score is " + seedScore + leechScore);
+            score = score + Math.ceil(seedScore) + Math.ceil(leechScore)
         }
         console.log("The score is " + score)
-        updateScore()
+        updateScore(score)
     })
 }

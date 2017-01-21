@@ -1,5 +1,5 @@
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-    console.log("In background page")
+    console.log("Ajax URL is " + searchURL)
     if (request.purpose == "Search") {
         console.log("The purpose is Search")
         var searchURL = request.givenURL + request.keyword

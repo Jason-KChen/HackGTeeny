@@ -1,3 +1,3 @@
-function updateScore() {
-    
+function updateScore(score) {
+    $(document).find(".number").text(score)
 }
