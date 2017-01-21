@@ -1,0 +1,23 @@
+{
+  	"manifest_version": 2,
+
+  	"name": "PirateRanker",
+  	"description": "HackGteeny Project",
+  	"version": "0.0.1",
+
+  	"permissions":
+	[
+    	"<all_urls>"
+	],
+
+	"browser_action":
+	{
+		"default_popup": "popup.html"
+	},
+
+	"background":
+	{
+		"scripts":["background.js"],
+		"persistent": false
+	}
+}
