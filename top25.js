@@ -1,3 +1,4 @@
+
 function top25(datahtml)
 {
 	//parsing the title
@@ -66,7 +67,7 @@ function top25(datahtml)
 			var alpha = /^[a-zA-Z]+$/;
 			for(var j = 1; j < temp.length-1; j++)
 			{
-				if(alphais(temp[j]) && temp[j] == temp[j].toUpperCase() && temp[(j-1)] != ' ' && temp[j+1] == temp[j+1].toLowerCase() && temp[j-1] == temp[j-1].toLowerCase())
+				if(alphais(temp[j]) && temp[j] == temp[j].toUpperCase() && temp[(j-1)] != ' ' && temp[j+1] == temp[j+1].toLowerCase() && (temp[j-1] == temp[j-1].toLowerCase() || !alphais(temp[j-1])))
 				{
 					temp = temp.splice(j,0," ");
 				}
