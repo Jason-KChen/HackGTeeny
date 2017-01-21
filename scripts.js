@@ -6,6 +6,9 @@ function doSomething() {
     document.getElementsByClassName('secondPage')[0].style.display = "inline";
     document.getElementsByClassName('firstPage')[0].style.display = "none";
     console.log('clicked');
+
+    var p = songName + " " + artistName;
+    SearchItem(p);
 }
 
 window.onload = function() {
