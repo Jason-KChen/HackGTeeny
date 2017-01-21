@@ -1,7 +1,9 @@
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    console.log("In background page")
     if (request.purpose == "Search") {
+        console.log("The purpose is Search")
+        var searchURL = request.givenURL + request.keyword
         $.ajax({
-            var searchURL = request.givenURL + request.keyword
             url: searchURL,
             async: true,
             crossDomain: true,
