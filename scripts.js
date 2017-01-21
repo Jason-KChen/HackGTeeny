@@ -5,8 +5,10 @@ function doSomething() {
 
     document.getElementsByClassName('secondPage')[0].style.display = "inline";
     document.getElementsByClassName('firstPage')[0].style.display = "none";
-
-    return false;
-
+    console.log('clicked');
 }
 
+window.onload = function() {
+    console.log("loaded");
+    document.getElementById("enter").addEventListener('click', doSomething);
+}
