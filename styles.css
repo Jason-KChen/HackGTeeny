@@ -5,7 +5,8 @@ html {
 body {
     text-align: center;
     font-family: 'Open Sans', sans-serif;
-
+    color: #FFCAB1;
+    background: #C1D7AE;
 }
 
 table {
@@ -22,4 +23,6 @@ table {
 
 button {
     font-family: 'Open Sans', sans-serif;
+    color: #6F1A07;
 }
+
