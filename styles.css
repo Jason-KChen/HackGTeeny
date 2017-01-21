@@ -4,6 +4,8 @@ html {
 }
 body {
     text-align: center;
+    font-family: 'Open Sans', sans-serif;
+
 }
 
 table {
@@ -16,4 +18,8 @@ table {
 
 .secondPage {
     display: none;
+}
+
+button {
+    font-family: 'Open Sans', sans-serif;
 }
