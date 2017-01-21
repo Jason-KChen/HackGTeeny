@@ -13,3 +13,7 @@ table {
 .number {
     font-size: 100px;
 }
+
+.secondPage {
+    display: none;
+}

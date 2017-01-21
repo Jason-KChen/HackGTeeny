@@ -7,16 +7,31 @@
   </head>
 
   <body>
+
+  <div class="firstPage">
     <h1> The ParrrateBay Score </h1>
     <h2> Top 25 </h2>
     <table>
     </table>
 
     <h3> Search up your favorite song!!!!!! </h3>
-    <form action="song.html">
-    Song Name: <input type = "text" name = "Song"><br>
-    Artist Name: <input type = "text" name = "Artist"><br>
+    <form onsubmit="return doSomething()">
+    Song Name: <input type = "text" name = "Song" id = "song"><br>
+    Artist Name: <input type = "text" name = "Artist" id = "artist"><br>
     <input type = "submit" value = "enter">
     </form>
+  </div>
+
+  <div class="secondPage">
+
+    <body>
+    <script src="scripts.js"></script>
+    <h1 id = "songTitle"> </h1>
+    <h1 class = "number"> 88 </h1>
+    <form action="index.html">
+    <input type = "submit" value = "Back">
+    </form>
+  </div>
+
   </body>
 </html>
