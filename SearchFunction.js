@@ -32,24 +32,38 @@ function SearchItem(songName, artistName) {
             "keyword2": response.key2,
             "score": score
         }
-
+        console.log("Get Month")
         chrome.runtime.sendMessage(message, function(response) {
+            console.log(1);
             var resultHTML = $.parseHTML(response.result)
             var targetArtist = response.artistName.toLowerCase()
-            var array = $(resultHTML).find(".tbl").find(".tbody").find("tr")
+            console.log(targetArtist)
+            var array = $(resultHTML).find(".tbl").find("tbody").find("tr")
+            console.log(array)
             var date = ""
-            for (i = 0; i < array.length; i++) {
-                if ($(array[i]).find("td:eq(2)").text().toLowerCase() == targetArtist) {
-                    date = date + $(array[i]).find("td:eq(5)").text()
-                    i = array.length
+            var index = 0
+            for (index = 0; index < array.length; index++) {
+                if ($(array[index]).find("td:eq(2)").text().toLowerCase() == targetArtist) {
+                    date = date + $(array[index]).find("td:eq(5)").text()
+                    console.log("In loop " + $(array[index]).find("td:eq(5)").text())
+                    index = array.length + 5
                 }
             }
 
-            var todayDate = new Date()
-            var oldDate = new Date(date)
-            var diffDate = new Date(todayDate - oldDate)
-            var numOfMonth = diffDate.getMonth() + 1 + (diffDate.getYear() * 12)
-            updateScore(score * (Math.log(numOfMonth) / Math.log(12)))
+            if (index == array.length) {
+                console.log(5)
+                updateScore(score)
+            } else {
+                console.log(2);
+                console.log(date);
+                console.log("Divider");
+                var todayDate = new Date()
+                var oldDate = new Date(date)
+                var diffDate =  Math.floor((todayDate - oldDate) * 3.8052e-10)
+                console.log(diffDate)
+                updateScore(Math.ceil(score * (Math.log(diffDate) / Math.log(12))))
+                console.log(3);
+            }
         })
     })
 }
