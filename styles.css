@@ -30,13 +30,13 @@ table.tableSection tbody {
     overflow: auto;
     height: 170px;
 }
-table.tableSection tr {
-    width: 100%;
-    display: table;
-    text-align: left;
+
+.row-num {
+    width: 10%;
 }
-table.tableSection th, table.tableSection td {
-    width: 33%;
+
+.row-song {
+    width: 90%;
 }
 
 .number {
