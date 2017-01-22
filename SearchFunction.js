@@ -61,7 +61,7 @@ function SearchItem(songName, artistName) {
                 var oldDate = new Date(date)
                 var diffDate =  Math.floor((todayDate - oldDate) * 3.8052e-10)
                 console.log(diffDate)
-                updateScore(Math.ceil(score * (Math.log(diffDate) / Math.log(12))))
+                updateScore(Math.ceil(score * (Math.log(diffDate) / Math.log(12)) * 100 / 60))
                 console.log(3);
             }
         })
