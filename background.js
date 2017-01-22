@@ -56,5 +56,28 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
             console.log("Background Page is Broken");
         })
     }
+    if (request.purpose == "top25") {
+        console.log("The purpose is getting top 25")
+        var searchURL = request.givenURL
+        console.log("The searchURL is " + searchURL)
+
+        $.ajax({
+            url: searchURL,
+            async: true,
+            crossDomain: true,
+            crossOrigin: true,
+            beforeSend: function(xhrObj) {
+                xhrObj.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+                xhrObj.setRequestHeader("Accept", "application/json")
+                xhrObj.setRequestHeader("cache-control", "no-cache")
+            },
+            type: request.method
+        })
+        .done(function(data, status, xhr) {
+            sendResponse({
+                result: data
+            })
+        })
+    }
     return true;
 })
