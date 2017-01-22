@@ -11,7 +11,9 @@ body {
 h1 {
     font-family: 'Rock Salt', cursive;
 }
-
+h2 {
+    font-size: 200%;
+}
 table.tableSection {
     display: table;
     border-style: solid;
@@ -21,6 +23,7 @@ table.tableSection {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 15px;
+    font-size: 115%
 }
 table.tableSection thead, table.tableSection tbody {
     float: right;
